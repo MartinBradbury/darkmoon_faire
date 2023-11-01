@@ -20,4 +20,15 @@ user = SHEET.worksheet('user')
 
 data = user.get_all_values()
 
-print(data)
+def create_user():
+    """
+    Create a username and password and store in google sheets
+    """
+    print("Welcome, would you like to:")
+    print("[1] Login: ")
+    print("[2] Create Account: ")
+    print("Please select [1] or [2]")
+    selection = input(": ")
+    print(f"you selected {selection}")
+
+create_user()
