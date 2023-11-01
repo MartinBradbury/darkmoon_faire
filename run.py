@@ -29,6 +29,19 @@ def create_user():
     print("[2] Create Account: ")
     print("Please select [1] or [2]")
     selection = input(": ")
-    print(f"you selected {selection}")
+    while selection != int(1):
+        print(f"you selected {selection}")
+        if selection == '1':
+            print("create account")
+            break
+        if selection == '2':
+            print("login")
+            break        
+        else:
+            print("please select 1 or 2")
+            selection = input(": ")
+            
+
+
 
 create_user()
