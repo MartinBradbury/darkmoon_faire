@@ -82,11 +82,21 @@ def validate_data(values):
     return True
 
 
-
+def update_username(data):
+    """
+    update username on the google sheet
+    """
+    print("Updating Username....\n")
+    username_worksheet = SHEET.worksheet('username')
+    username_worksheet.append_row(data)
+    print("Username accepted")
 
 data = get_data()
 
-print(data)
+get_data = [str(value) for value in data]
+update_username(get_data)
+
+
 
 
 #validate data for username with try and if etc
