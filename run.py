@@ -48,15 +48,15 @@ def main():
 
 
 
-def get_data():
+def get_username():
     """
     Get Username and password data
     """
     while True:
         print("please enter your username")
 
-        data_str = input("username: ")
-        username = data_str
+        data_user = input("username: ")
+        username = data_user
         validate_data(username)
 
         if validate_data(username):
@@ -96,13 +96,13 @@ def validate_data(values):
     return True
 
 
-def update_username(data):
+def update_username(user):
     """
     update username on the google sheet
     """
     print("Updating Username....\n")
     username_worksheet = SHEET.worksheet('username')
-    username_worksheet.append_row(data)
+    username_worksheet.append_row(user)
     print("Username accepted")
 
 
@@ -117,14 +117,14 @@ def update_password(pw):
 
 
 
-data = get_data()
+user = get_username()
 pw = get_password()
-get_data = [str(value) for value in data]
+get_username = [str(value) for value in user]
 get_password = [str(value) for value in pw]
-update_username(get_data)
+update_username(get_username)
 update_password(get_password)
 
 
-print(get_data)
+
 
 #validate data for username with try and if etc
