@@ -53,9 +53,9 @@ def get_data():
     Get Username and password data
     """
     while True:
-        print("please enter your username and password")
+        print("please enter your username")
 
-        data_str = input("enter uservame: ")
+        data_str = input("username: ")
         username = data_str
         validate_data(username)
 
@@ -63,6 +63,20 @@ def get_data():
             print("data is valid")
             break
     return username
+
+def get_password():
+    """
+    get password
+    """
+    while True:
+        print("please enter your password")
+        data_pw = input("password: ")
+        password = data_pw
+        validate_data(password)
+        if validate_data(password):
+            print("password is valid")
+            break
+    return password
 
 def validate_data(values):
     """
@@ -91,12 +105,26 @@ def update_username(data):
     username_worksheet.append_row(data)
     print("Username accepted")
 
+
+def update_password(pw):
+    """
+    update password
+    """
+    print("updating password....\n")
+    password_worksheet = SHEET.worksheet('password')
+    password_worksheet.append_row(pw)
+    print("password accepted")
+
+
+
 data = get_data()
-
+pw = get_password()
 get_data = [str(value) for value in data]
+get_password = [str(value) for value in pw]
 update_username(get_data)
+update_password(get_password)
 
 
-
+print(get_data)
 
 #validate data for username with try and if etc
