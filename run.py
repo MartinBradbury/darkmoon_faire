@@ -52,11 +52,17 @@ def get_data():
     """
     Get Username and password data
     """
-    print("please enter your username and password")
+    while True:
+        print("please enter your username and password")
 
-    data_str = input("enter uservame: ")
-    username = data_str
-    validate_data(username)
+        data_str = input("enter uservame: ")
+        username = data_str
+        validate_data(username)
+
+        if validate_data(username):
+            print("data is valid")
+            break
+    return username
 
 def validate_data(values):
     """
@@ -71,13 +77,16 @@ def validate_data(values):
 
     except ValueError as e:
         print(f"invalid data as{e}, please try again.")
+        return False
+
+    return True
 
 
 
 
-get_data()
+data = get_data()
 
-
+print(data)
 
 
 #validate data for username with try and if etc
