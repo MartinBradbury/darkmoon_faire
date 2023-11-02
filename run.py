@@ -64,6 +64,7 @@ def validate_data(values):
     password. If false it will raise a valueerror
     """
     try:
+        [str(value) for value in values]
         if len(values) == 0:
             raise ValueError(f"Please type your username")
     
