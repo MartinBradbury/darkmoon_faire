@@ -3,6 +3,8 @@
 # Write your code to expect a terminal of 80 characters wide and 24 rows high
 import gspread
 from google.oauth2.service_account import Credentials
+import pandas as pd
+import numpy as np
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -35,11 +37,12 @@ def main():
     selection = input(": ")
     while selection != int():
         if selection == '1':
-            print("create account")
+            print("login")
             break
         if selection == '2':
-            print("login")
-            break        
+            print("create account")
+            break 
+            get_username()       
         else:
             print("please select 1 or 2")
             selection = input(": ")
@@ -62,7 +65,7 @@ def get_username():
         if validate_data(username):
             print("data is valid")
             break
-    return username
+    return username.split()
 
 def get_password():
     """
@@ -76,7 +79,7 @@ def get_password():
         if validate_data(password):
             print("password is valid")
             break
-    return password
+    return password.split()
 
 def validate_data(values):
     """
@@ -116,7 +119,23 @@ def update_password(pw):
     print("password accepted")
 
 
+#def login_user():
+    print("please enter your usrname")
+    usrname = input("Username: ")
+    usr = SHEET.worksheet('username')
+    usrn = usr.get_all_values()
+    
+    if usrname in usrn == usrn:
+        print(f"welcome {usrname}")
+        print("please enter your password")
 
+
+#login_user()
+
+
+
+
+main()
 user = get_username()
 pw = get_password()
 get_username = [str(value) for value in user]
@@ -126,5 +145,10 @@ update_password(get_password)
 
 
 
+#usr = SHEET.worksheet('username')
+#data = usr.get_all_values()
+
+#print(data)
 
 #validate data for username with try and if etc
+
